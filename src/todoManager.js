@@ -31,6 +31,7 @@ const TodoManager = () => {
   let projectList = ProjectList();
 
   let getProject = (id) => {
+    id=Number(id)
     let target = null;
     projectList.some(
       (project) => {
@@ -106,8 +107,6 @@ const TodoManager = () => {
     let todo = getTodo(projectID, id)
     todo[field] = value
   }
-
-
 
   return {
     getProject,

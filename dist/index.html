@@ -12,47 +12,43 @@
 <body>
   <div class="wrapper">
     <div class="container">
-      <div class="newProjectForm">
+      <form class="newProjectForm">
         <h3>ADD NEW PROJECT</h3>
-        <input type="text" placeholder='title'>
-        <button>Create</button>
-      </div>
-      <div class="newTodoForm">
+        <input id="new-project-name" type="text" placeholder='title'>
+        <button id="new-project-submit">Create</button>
+      </form>
+      <form class="newTodoForm">
         <h3>ADD NEW TODO</h3>
-        <select name="" id="">
-          <option value="">Select project</option>
-          <option value="">default</option>
-          <option value="">other</option>
+        <select name="" id="select-project-add-form">
         </select>
-        <label for="title">title</label>
-        <input type="text" placeholder='add title'>
-        <label for="description">description</label>
-        <input type="text" placeholder='add description'>
-        <label for="dueDate">date</label>
-        <input type="date">
-        <label for="priority">select priority</label>
-        <select name="" id="">
+        <label for="new-todo-title">title</label>
+        <input id="new-todo-title" type="text" placeholder='add title'>
+        
+        <label for="new-todo-description">description</label>
+        <input id="new-todo-description" type="text" placeholder='add description'>
+        
+        <label for="new-todo-dueDate">date</label>
+        <input type="date" id="new-todo-dueDate">
+        
+        <label for="new-todo-priority">select priority</label>
+        <select name="" id="new-todo-priority">
           <option value="">Select priority</option>
           <option value="">High</option>
           <option value="">Low</option>
         </select>
-        <label for="notes">add notes</label>
-        <textarea name="notes" id="" cols="30" rows="5"></textarea>
-        <button>Create</button>
-      </div>
+        
+        <label for="new-todo-notes">add notes</label>
+        <textarea name="notes" id="new-todo-notes" cols="30" rows="5"></textarea>
+        
+        <button id="new-todo-submit">Create</button>
+      </form>
       <div class="todoContainer">
         <div class="projectName">
           <h2>Select a project</h2>
-          <select name="" id="">
-            <option value="">Default</option>
+          <select name="" id="projects-list">
           </select>
         </div>
-        <div class="todoList">
-          <div class="todo">
-            <div class="title">Title</div>
-            <div class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, enim!</div>
-            <div class="date">Date</div>
-          </div>
+        <div id="todo-list" class="todoList">
         </div>
       </div>
     </div>
