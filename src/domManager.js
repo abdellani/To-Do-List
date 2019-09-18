@@ -8,13 +8,13 @@ const DomManager = (todoManager) => {
   let addNewProjectBotton = document.getElementById("new-project-submit")
   let addNewTodoBotton = document.getElementById("new-todo-submit")
 
-  let newTodoTitle = document.getElementById("new-todo-title").value
-  let newTodoDescription = document.getElementById("new-todo-description").value
-  let newTodoDueDate = document.getElementById("new-todo-dueDate").value
-  let newTodoPriority = document.getElementById("new-todo-priority").value
-  let newTodoNotes = document.getElementById("new-todo-notes").value
+  let newTodoTitle = document.getElementById("new-todo-title")
+  let newTodoDescription = document.getElementById("new-todo-description")
+  let newTodoDueDate = document.getElementById("new-todo-dueDate")
+  let newTodoPriority = document.getElementById("new-todo-priority")
+  let newTodoNotes = document.getElementById("new-todo-notes")
 
-  
+
   const initalize = () => {
     selectProjectToShow.addEventListener("change", () => {
       let projectId = getSelecterProjectToShow()
@@ -26,20 +26,18 @@ const DomManager = (todoManager) => {
     })
     addNewTodoBotton.addEventListener("click", (event) => {
       event.preventDefault();
-      let projectID=getSelecterProjectToAdd()
-      
-      createNewTodo(projectID,newTodoTitle,newTodoDescription,newTodoDueDate,newTodoPriority,newTodoNotes,false/*status*/)
-
+      let projectID = getSelecterProjectToAdd()
+      createNewTodo(projectID, newTodoTitle.value, newTodoDescription.value, newTodoDueDate.value, newTodoPriority.value, newTodoNotes.value, false/*status*/)
     })
   }
   const render = () => {
     loadProjectsList()
     loadTodosList(getSelecterProjectToShow())
   }
-  let getSelecterProjectToShow=()=>{
+  let getSelecterProjectToShow = () => {
     return selectProjectToShow.options[selectProjectToShow.selectedIndex].value
   }
-  let getSelecterProjectToAdd=()=>{
+  let getSelecterProjectToAdd = () => {
     return selectProjectAddForm.options[selectProjectAddForm.selectedIndex].value
   }
 
@@ -66,10 +64,10 @@ const DomManager = (todoManager) => {
   }
   let createNewProject = () => {
     todoManager.createNewProject(newProjectName.value)
-    newProjectName.value=""
+    newProjectName.value = ""
     render()
   }
-  const createNewTodo=(projectID, title, description, dueDate, priority, notes, status)=>{
+  const createNewTodo = (projectID, title, description, dueDate, priority, notes, status) => {
     todoManager.createNewTodo(projectID, title, description, dueDate, priority, notes, status)
     loadTodosList(getSelecterProjectToShow())
   }
