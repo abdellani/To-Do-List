@@ -5,13 +5,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Project 3 : restaurent page</title>
+  <title>ToDo list</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <div id="content">
-
+  <div class="wrapper">
+    <div class="container">
+      <div class="newProjectForm">
+        <h3>ADD NEW PROJECT</h3>
+        <input type="text" placeholder='title'>
+        <button>Create</button>
+      </div>
+      <div class="newTodoForm">
+        <h3>ADD NEW TODO</h3>
+        <select name="" id="">
+          <option value="">Select project</option>
+          <option value="">default</option>
+          <option value="">other</option>
+        </select>
+        <label for="title">title</label>
+        <input type="text" placeholder='add title'>
+        <label for="description">description</label>
+        <input type="text" placeholder='add description'>
+        <label for="dueDate">date</label>
+        <input type="date">
+        <label for="priority">select priority</label>
+        <select name="" id="">
+          <option value="">Select priority</option>
+          <option value="">High</option>
+          <option value="">Low</option>
+        </select>
+        <label for="notes">add notes</label>
+        <textarea name="notes" id="" cols="30" rows="5"></textarea>
+        <button>Create</button>
+      </div>
+      <div class="todoContainer">
+        <div class="projectName">
+          <h2>Select a project</h2>
+          <select name="" id="">
+            <option value="">Default</option>
+          </select>
+        </div>
+        <div class="todoList">
+          <div class="todo">
+            <div class="title">Title</div>
+            <div class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil, enim!</div>
+            <div class="date">Date</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="main.js"></script>
 </body>
