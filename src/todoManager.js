@@ -26,62 +26,99 @@ let ProjectList = () => {
 }
 
 
-// let todoStructure = [{
-//   "id": "1",
-//   "project_name": "default",
-//   "todos": [{
-//     "id": "1",
-//     "title": "title",
-//     "description": "description",
-//     "dueDate": "date",
-//     "priority": "integer",
-//     "notes": "notes",
-//     "status": "boolean"
-//   }]
-// }, ]
-
 const TodoManager = () => {
 
   let projectList = ProjectList();
 
   let getProject = (id) => {
-    let target=null;
+    let target = null;
     projectList.some(
       (project) => {
-        console.log(`project.id = ${project.id}`)
         if (project.id === id) {
-          target=project;
+          target = project;
           return true;
         }
       }
     )
     return target;
   }
-  let getProjects=()=>{
+  let getProjects = () => {
     return projectList;
   }
+
+  let getTodo = (projectID, id) => {
+    let project = getProject(projectID);
+    let target = null;
+    project.todos.some(
+      (todo) => {
+        if (todo.id === id) {
+          target = todo;
+          return true;
+        }
+      }
+    )
+    return target;
+  }
+
   let createNewProject = (name) => {
     let id = projectList[projectList.length - 1].id + 1;
     projectList.push(Project(id, name))
   }
-  /*
-      getListOfProject()
-      createNewProject(title)
-      deleteProject(id)
-      updateProjectName(id,name)
-  */
 
-  /*
-      //todos
-      getListOfTodos(projectID)
-      createNewTodoProejct(projectID,Todo)
- */
+  const deleteProject = (id) => {
+    projectList = projectList.filter((item) => {
+      if (item.id === id) {
+        return false
+      } else {
+        return true
+      }
+    })
+  }
+
+  const updateProject = (id, name) => {
+    let project = getProject(id);
+    project.name = name;
+  }
+
+  const createNewTodo = (projectID, title, description, dueDate, priority, notes, status) => {
+    let project = getProject(projectID);
+    let id = 1;
+    if (project.todos.length !== 0) {
+      id = project.todos[project.todos.length - 1].id + 1
+    }
+    let todo = Todo(id, title, description, dueDate, priority, notes, status)
+    project.todos.push(todo)
+  }
+
+  const deleteTodo = (projectID, todoID) => {
+    let project = getProject(projectID);
+    project.todos = project.todos.filter((item) => {
+      if (item.id === todoID) {
+        return false
+      } else {
+        return true
+      }
+    })
+  }
+
+
+  const updateTodo = (projectID, id, field, value) => {
+    let todo = getTodo(projectID, id)
+    todo[field] = value
+  }
+
+
+
   return {
     getProject,
     getProjects,
-    createNewProject
+    createNewProject,
+    deleteProject,
+    updateProject,
+    createNewTodo,
+    deleteTodo,
+    updateTodo
   }
 }
 
-todoManager = TodoManager()
-todoManager.createNewProject("new project ")
+export default TodoManager
