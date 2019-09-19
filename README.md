@@ -1,6 +1,6 @@
 ### Project Info
 
-- HTML, CSS and Javascript
+- HTML, CSS and Javascript.
 
 ### About Project
 
