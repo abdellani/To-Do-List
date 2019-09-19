@@ -1,12 +1,12 @@
-import TodoManager from './todoManager'
-import DomManager from './domManager'
+import TodoManager from './todoManager';
+import DomManager from './domManager';
 
-let todoManager = TodoManager()
+const todoManager = TodoManager();
 if (localStorage.getItem('projects') !== null) {
-  todoManager.setProjects(JSON.parse(localStorage.getItem('projects')))
+  todoManager.setProjects(JSON.parse(localStorage.getItem('projects')));
 } else {
-  localStorage.setItem('projects', JSON.stringify(todoManager.getProjects()))
+  localStorage.setItem('projects', JSON.stringify(todoManager.getProjects()));
 }
-let domManager = DomManager(todoManager)
-domManager.initalize()
-domManager.render()
+const domManager = DomManager(todoManager);
+domManager.initalize();
+domManager.render();

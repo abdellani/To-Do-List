@@ -1,43 +1,40 @@
-let Todo = (id, title, description, dueDate, priority) => {
-  return {
-    id,
-    title,
-    description,
-    dueDate,
-    priority
-  }
-}
-let Project = (id, name) => {
-  return {
-    id,
-    name,
-    todos: []
-  }
-}
+const Todo = (id, title, description, dueDate, priority) => ({
+  id,
+  title,
+  description,
+  dueDate,
+  priority,
+});
+const Project = (id, name) => ({
+  id,
+  name,
+  todos: [],
+});
 
-let ProjectList = () => {
-  let project = Project(1, "default");
-  project.todos.push(Todo(1, "title", "description", '2019-09-20', "high"));
-  let projects = []
-  projects.push(project)
-  return (projects)
-}
+const ProjectList = () => {
+  const project = Project(1, 'default');
+  project.todos.push(Todo(1, 'title', 'description', '2019-09-20', 'high'));
+  const projects = [];
+  projects.push(project);
+  return (projects);
+};
 
 
 const TodoManager = () => {
-
   let projectList = ProjectList();
 
   const setProjects = (projets) => {
-    projectList = projets
-  }
+    projectList = projets;
+  };
+
+  const getProjects = () => projectList;
 
   const saveToStorage = () => {
-    localStorage.setItem('projects', JSON.stringify(getProjects()))
-  }
+    localStorage.setItem('projects', JSON.stringify(getProjects()));
+  };
 
-  let getProject = (id) => {
-    id = Number(id)
+  const getProject = (projectID) => {
+    const id = Number(projectID);
     let target = null;
     projectList.some(
       (project) => {
@@ -45,17 +42,15 @@ const TodoManager = () => {
           target = project;
           return true;
         }
-      }
-    )
+        return false;
+      },
+    );
     return target;
-  }
-  let getProjects = () => {
-    return projectList;
-  }
+  };
 
-  let getTodo = (projectID, id) => {
-    let project = getProject(projectID);
-    id = Number(id)
+  const getTodo = (projectID, todoID) => {
+    const project = getProject(projectID);
+    const id = Number(todoID);
     let target = null;
     project.todos.some(
       (todo) => {
@@ -63,71 +58,70 @@ const TodoManager = () => {
           target = todo;
           return true;
         }
-      }
-    )
+        return false;
+      },
+    );
     return target;
-  }
+  };
 
-  let createNewProject = (name) => {
-    let id = projectList[projectList.length - 1].id + 1;
-    projectList.push(Project(id, name))
-    saveToStorage()
-  }
+  const createNewProject = (name) => {
+    const id = projectList[projectList.length - 1].id + 1;
+    projectList.push(Project(id, name));
+    saveToStorage();
+  };
 
-  const deleteProject = (id) => {
-    id = Number(id)
-    if (id == 1) {
-      alert(`Default project can't be deleted`)
-      return
+  const deleteProject = (projectID) => {
+    const id = Number(projectID);
+    if (id === 1) {
+      alert('Default project can\'t be deleted');
+      return;
     }
     projectList = projectList.filter((item) => {
       if (item.id === id) {
-        return false
-      } else {
-        return true
+        return false;
       }
-    })
-    saveToStorage()
-  }
+      return true;
+    });
+    saveToStorage();
+  };
 
   const updateProject = (id, name) => {
-    let project = getProject(id);
+    const project = getProject(id);
     project.name = name;
-    saveToStorage()
-  }
+    saveToStorage();
+  };
 
   const createNewTodo = (projectID, title, description, dueDate, priority) => {
-    let project = getProject(projectID);
+    const project = getProject(projectID);
     let id = 1;
     if (project.todos.length !== 0) {
-      id = project.todos[project.todos.length - 1].id + 1
+      id = project.todos[project.todos.length - 1].id + 1;
     }
-    let todo = Todo(id, title, description, dueDate, priority)
-    project.todos.push(todo)
-    saveToStorage()
-  }
+    const todo = Todo(id, title, description, dueDate, priority);
+    project.todos.push(todo);
+    saveToStorage();
+  };
 
   const deleteTodo = (projectID, todoID) => {
-    let project = getProject(projectID);
+    const project = getProject(projectID);
     project.todos = project.todos.filter((item) => {
       if (item.id === todoID) {
-        return false
-      } else {
-        return true
+        return false;
       }
-    })
-    saveToStorage()
-  }
+      return true;
+    });
+    saveToStorage();
+  };
 
 
   const updateTodo = (projectID, id, title, description, dueDate, priority) => {
-    let todo = getTodo(projectID, id)
-    todo.title = title
-    todo.description = description
-    todo.dueDate = dueDate
-    todo.priority = priority
-    saveToStorage()
-  }
+    const todo = getTodo(projectID, id);
+    todo.title = title;
+    todo.description = description;
+    todo.dueDate = dueDate;
+    todo.priority = priority;
+    saveToStorage();
+  };
 
   return {
     getProject,
@@ -138,8 +132,8 @@ const TodoManager = () => {
     createNewTodo,
     deleteTodo,
     updateTodo,
-    setProjects
-  }
-}
+    setProjects,
+  };
+};
 
-export default TodoManager
+export default TodoManager;
