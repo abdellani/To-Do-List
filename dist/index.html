@@ -18,35 +18,35 @@
         <button id="new-project-submit">Create</button>
       </form>
       <form class="newTodoForm">
-        <h3>ADD NEW TODO</h3>
+        <h3 id='todoHeader'>ADD NEW TODO</h3>
         <select name="" id="select-project-add-form">
         </select>
         <label for="new-todo-title">title</label>
         <input id="new-todo-title" type="text" placeholder='add title'>
-        
+
         <label for="new-todo-description">description</label>
         <input id="new-todo-description" type="text" placeholder='add description'>
-        
+
         <label for="new-todo-dueDate">date</label>
         <input type="date" id="new-todo-dueDate">
-        
+
         <label for="new-todo-priority">select priority</label>
         <select name="" id="new-todo-priority">
-          <option value="">Select priority</option>
-          <option value="">High</option>
-          <option value="">Low</option>
+          <option value="low">Select priority</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
         </select>
-        
-        <label for="new-todo-notes">add notes</label>
-        <textarea name="notes" id="new-todo-notes" cols="30" rows="5"></textarea>
-        
+
+        <input type="text" id='todoIdHolder' value='' data-projectID='' class='hidden'>
         <button id="new-todo-submit">Create</button>
+        <button id="editBackButton" class='hidden'>Back</button>
       </form>
       <div class="todoContainer">
         <div class="projectName">
           <h2>Select a project</h2>
           <select name="" id="projects-list">
           </select>
+          <button id='deleteProject'>Delete this project</button>
         </div>
         <div id="todo-list" class="todoList">
         </div>
