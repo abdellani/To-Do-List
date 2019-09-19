@@ -122,7 +122,7 @@ const DomManager = (todoManager) => {
     });
     addNewTodoBotton.addEventListener('click', (event) => {
       event.preventDefault();
-      let projectID = getSelecterProjectToAdd();
+      const projectID = getSelecterProjectToAdd();
       const todoID = todoIdHolder.value;
 
       if (newTodoTitle.value === '') {
@@ -139,8 +139,8 @@ const DomManager = (todoManager) => {
           newTodoPriority.options[newTodoPriority.selectedIndex].value);
         emptyForm();
       } else {
-        let {projectID} = todoIdHolder.dataset;
-        todoManager.updateTodo(projectID, todoID, newTodoTitle.value,
+        const projectIdentifier = todoIdHolder.dataset.projectID;
+        todoManager.updateTodo(projectIdentifier, todoID, newTodoTitle.value,
           newTodoDescription.value, newTodoDueDate.value,
           newTodoPriority.options[newTodoPriority.selectedIndex].value);
 
