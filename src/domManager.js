@@ -139,7 +139,7 @@ const DomManager = (todoManager) => {
           newTodoPriority.options[newTodoPriority.selectedIndex].value);
         emptyForm();
       } else {
-        projectID = todoIdHolder.dataset.projectID;
+        let {projectID} = todoIdHolder.dataset;
         todoManager.updateTodo(projectID, todoID, newTodoTitle.value,
           newTodoDescription.value, newTodoDueDate.value,
           newTodoPriority.options[newTodoPriority.selectedIndex].value);
